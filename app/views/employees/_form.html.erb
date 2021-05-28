@@ -1,0 +1,27 @@
+<%= form_with(model: employee, local: true) do |f| %>
+    <% if employee.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(employee.errors.count, "error") %> prohibited this user from being saved:</h2>
+  
+        <ul>
+          <% employee.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    
+  <div class="form-group">
+    <label for="inputAddress">Department</label>
+    <%= f.select :department_id , Department.all.map {|dept| [dept.name, dept.id]}%>
+  </div>
+  
+
+  <div style="padding-top:15px" class="actions text-center"">
+    <div class="actions">
+      <%= f.submit "Update", class: "btn btn-primary" %>
+    </div>
+  </div>
+  
+  <% end %>
